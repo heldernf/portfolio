@@ -119,7 +119,7 @@ const intervalo = setInterval(moveSlide, 10000);
 
 // PASSA IMAGENS DO SLIDE CLICANDO
 btnSlide.forEach((button, index) => {
-    button.addEventListener('click', function () {         
+    button.addEventListener('click', function () {
         const img = button.parentNode.parentNode.getElementsByClassName("first-img-slide");
         const slideControls = button.parentNode.querySelectorAll(".slide-button");
         const positionSlideDois = index % 3;
@@ -139,4 +139,16 @@ btnSlide.forEach((button, index) => {
             btnSlide[index].style.backgroundColor = "white";
         }
     });
+});
+
+// LOAD AO ENVIAR O FORMULÁRIO
+const form = document.querySelector("form")
+
+form.addEventListener('submit', function () {
+    const body = document.querySelector("body");
+    const div = document.createElement("div");
+
+    body.appendChild(div);
+    body.style.overflow = 'hidden';
+    div.classList.add('load');
 });

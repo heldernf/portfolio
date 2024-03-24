@@ -95,19 +95,19 @@
 
     /* ----- SECTION FORM -- SECTION FORM -- SECTION FORM ----- */
 
-    section#contato form {
+    form#form-contato {
         width: 33rem;
         padding: 5rem 3rem 4rem 3rem;
     }
 
-    section#contato form {
+    form#form-contato {
         margin-top: 5rem;
         margin-bottom: 5.5rem;
         padding-left: 2.5rem;
         padding-right: 2.5rem;
     }
 
-    section#contato form>svg {
+    form#form-contato>svg {
         height: 4.3rem;
     }
 
@@ -115,7 +115,7 @@
         font-size: 1.2rem;
     }
 
-    section#contato form button {
+    button#btn-form {
         height: 4rem;
         width: 10rem;
         font-size: 1.25rem;
@@ -331,13 +331,13 @@
 
     /* ----- SECTION FORM -- SECTION FORM -- SECTION FORM ----- */
 
-    section#contato form {
+    form#form-contato {
         width: 54rem;
         margin-top: 5.5rem;
         margin-bottom: 6rem;
     }
 
-    section#contato form>svg {
+    form#form-contato>svg {
         height: 4.5rem;
     }
 
@@ -365,7 +365,7 @@
         font-size: 1.2rem;
     }
 
-    section#contato form button {
+    button#btn-form {
         height: 4.5rem;
     }
 
@@ -529,7 +529,7 @@
 
     /* ----- SECTION FORM -- SECTION FORM -- SECTION FORM ----- */
 
-    section#contato form {
+    form#form-contato {
         width: 70rem;
         margin: 6rem auto 6.5rem auto;
     }
@@ -550,7 +550,7 @@
         height: 23rem;
     }
 
-    section#contato form button {
+    button#btn-form {
         height: 4.8rem;
         width: 10.5rem;
         font-size: 1.3rem;
@@ -687,13 +687,13 @@
 
     /* ----- SECTION FORM -- SECTION FORM -- SECTION FORM ----- */
 
-    section#contato form {
+    form#form-contato {
         width: 86rem;
         padding: 5.5rem 6rem;
         margin: 7rem auto 7.5rem auto;
     }
 
-    section#contato form>svg {
+    form#form-contato>svg {
         height: 4.65rem;
     }
 
@@ -721,7 +721,7 @@
         font-size: 1.3rem;
     }
 
-    section#contato form button {
+    button#btn-form {
         width: 11.5rem;
         height: 5rem;
         font-size: 1.4rem;
@@ -899,7 +899,7 @@
 
     /* ----- SECTION FORM -- SECTION FORM -- SECTION FORM ----- */
 
-    section#contato form {
+    form#form-contato {
         padding: 5.7rem 5rem 6rem 5rem;
     }
 
