@@ -164,12 +164,12 @@ slideBox.forEach(slide => {
     slide.addEventListener('touchend', function () {
         const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
         nome = 'slide' + indexCurrentSlideBox;
-        if (lastDeltaX < -10 && positionSlide[nome] < imgPorSlide - 1) {
+        if (lastDeltaX < 0 && positionSlide[nome] < imgPorSlide - 1) {
             positionSlide[nome]++;
 
             moveSlide(nome, indexCurrentSlideBox);
             activeBackground(indexCurrentSlideBox);
-        } else if (lastDeltaX > 10 && positionSlide[nome] > 0) {
+        } else if (lastDeltaX > 0 && positionSlide[nome] > 0) {
             positionSlide[nome]--;
 
             moveSlide(nome, indexCurrentSlideBox);
@@ -177,6 +177,8 @@ slideBox.forEach(slide => {
         } else {
             moveSlide(nome, indexCurrentSlideBox);
         }
+
+        lastDeltaX = 0;
     });
 });
 
