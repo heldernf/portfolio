@@ -74,6 +74,7 @@ window.addEventListener('scroll', attOption);
 // SLIDE FUNCTIONS ---- SLIDE FUNCTIONS ---- SLIDE FUNCTIONS
 const firstImg = document.querySelectorAll(".first-img-slide");
 const slideBox = document.querySelectorAll('.slide-box');
+const imgPorSlide = slideBox[0].querySelectorAll('img').length;
 let nome;
 const positionSlide = {};
 for (let i = 0; i < firstImg.length; i++) {
@@ -113,7 +114,7 @@ function icrementoSlide() {
 
         positionSlide[nome]++;
 
-        if (positionSlide[nome] == slideBox.length) {
+        if (positionSlide[nome] == imgPorSlide) {
             positionSlide[nome] = 0;
         }
 
@@ -163,12 +164,12 @@ slideBox.forEach(slide => {
     slide.addEventListener('touchend', function () {
         const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
         nome = 'slide' + indexCurrentSlideBox;
-        if (lastDeltaX < -10 && positionSlide[nome] != slideBox.length - 1) {
+        if (lastDeltaX < -10 && positionSlide[nome] < imgPorSlide - 1) {
             positionSlide[nome]++;
 
             moveSlide(nome, indexCurrentSlideBox);
             activeBackground(indexCurrentSlideBox);
-        } else if (lastDeltaX > 10 && positionSlide[nome] != 0) {
+        } else if (lastDeltaX > 10 && positionSlide[nome] > 0) {
             positionSlide[nome]--;
 
             moveSlide(nome, indexCurrentSlideBox);
