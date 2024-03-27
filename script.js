@@ -62,7 +62,7 @@ function attOption() {
         sections.forEach((section, index) => {
             let topo = section.getBoundingClientRect().top;
             let janela = window.innerHeight;
-            
+
             if (topo < janela - 450) {
                 activeOption(index);
             }
@@ -73,54 +73,57 @@ window.addEventListener('scroll', attOption);
 
 // SLIDE FUNCTIONS ---- SLIDE FUNCTIONS ---- SLIDE FUNCTIONS
 const firstImg = document.querySelectorAll(".first-img-slide");
+const slideBox = document.querySelectorAll('.slide-box');
+let nome;
 const positionSlide = {};
+for (let i = 0; i < firstImg.length; i++) {
+    nome = 'slide' + i;
+    positionSlide[nome] = 0;
+}
 
 //MARCA OS BACKGROUND DOS BOTÕES DO SLIDE
 function activeBackground(i) {
     const allBtnSlideCurrent = firstImg[i].parentNode.querySelector('.slide-control').querySelectorAll('.slide-button');
-    
+
     allBtnSlideCurrent.forEach(btn => {
         btn.style.backgroundColor = 'transparent';
     });
-    
-    let nome = 'slide' + i;
-    if (positionSlide[nome] == -1) {
-        allBtnSlideCurrent[2].style.backgroundColor = 'white'
-    } else {
-        allBtnSlideCurrent[positionSlide[nome]].style.backgroundColor = 'white'
-    }
+
+    nome = 'slide' + i;
+    allBtnSlideCurrent[positionSlide[nome]].style.backgroundColor = 'white'
 }
 
-// PASSA IMAGENS AUTOMATICAMENTE
+// PASSA A IMAGEM DO SLIDE
 function moveSlide(nome, i) {
     if (positionSlide[nome] == 0) {
         firstImg[i].style.marginLeft = "0%";
     } else if (positionSlide[nome] == 1) {
         firstImg[i].style.marginLeft = "-100%";
     } else {
-        positionSlide[nome] = -1;
-
         firstImg[i].style.marginLeft = "-200%";
     }
 }
 
+// PASSA IMAGENS AUTOMATICAMENTE
 function icrementoSlide() {
-    for (let i = 0; i < firstImg.length; i++) {
-        let nome = 'slide' + i;
+    lastDeltaX = 0;
 
-        if (positionSlide[nome] == undefined) {
-            positionSlide[nome] = 1;
-        } else {
-            positionSlide[nome]++;
+    for (let i = 0; i < firstImg.length; i++) {
+        nome = 'slide' + i;
+
+        positionSlide[nome]++;
+
+        if (positionSlide[nome] == slideBox.length) {
+            positionSlide[nome] = 0;
         }
-        
+
         moveSlide(nome, i);
         activeBackground(i);
     }
 }
 setInterval(icrementoSlide, 8000);
 
-// PASSA IMAGENS DO SLIDE CLICANDO
+// PASSA IMAGENS DO SLIDE CLICANDO NOS BOTÕES
 const btnSlide = document.querySelectorAll(".slide-button");
 btnSlide.forEach((button, index) => {
     button.addEventListener('click', function () {
@@ -128,11 +131,51 @@ btnSlide.forEach((button, index) => {
         const currentBoxProjeto = button.closest('.box-projeto');
         const indexCurrentBoxProjeto = Array.from(allBoxProjeto).indexOf(currentBoxProjeto);
 
-        const nome = 'slide' + indexCurrentBoxProjeto;
+        nome = 'slide' + indexCurrentBoxProjeto;
         const selectPosition = index % 3;
         positionSlide[nome] = selectPosition;
         moveSlide(nome, indexCurrentBoxProjeto);
         activeBackground(indexCurrentBoxProjeto);
+    });
+});
+
+// PASSA IMAGENS DO SLIDE COM TOUCH
+let startX, currentX, deltaX, margin, lastDeltaX;
+slideBox.forEach(slide => {
+    slide.addEventListener('touchstart', function (e) {
+        startX = e.touches[0].clientX;
+    });
+
+    slide.addEventListener('touchmove', function (e) {
+        const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
+        currentX = e.touches[0].clientX;
+        deltaX = currentX - startX;
+
+        if (deltaX >= -20 && deltaX <= 20) {
+            nome = 'slide' + indexCurrentSlideBox;
+
+            margin = deltaX - (positionSlide[nome] * 100);
+            firstImg[indexCurrentSlideBox].style.marginLeft = `${margin}%`;
+            lastDeltaX = deltaX;
+        }
+    });
+
+    slide.addEventListener('touchend', function () {
+        const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
+        nome = 'slide' + indexCurrentSlideBox;
+        if (lastDeltaX < -10 && positionSlide[nome] != slideBox.length - 1) {
+            positionSlide[nome]++;
+
+            moveSlide(nome, indexCurrentSlideBox);
+            activeBackground(indexCurrentSlideBox);
+        } else if (lastDeltaX > 10 && positionSlide[nome] != 0) {
+            positionSlide[nome]--;
+
+            moveSlide(nome, indexCurrentSlideBox);
+            activeBackground(indexCurrentSlideBox);
+        } else {
+            moveSlide(nome, indexCurrentSlideBox);
+        }
     });
 });
 

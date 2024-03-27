@@ -506,7 +506,7 @@ div.slide-box img {
 
 div.slide-control {
     display: flex;
-    gap: 0 2.2rem;
+    gap: 0 .8rem;
 
     position: absolute;
     bottom: .6rem;
@@ -516,10 +516,10 @@ div.slide-control {
 
 div.slide-control span.slide-button {
     display: block;
-    width: 1.8rem;
-    height: 1.1rem;
+    width: 2.6rem;
+    height: 1rem;
     border: .1rem solid var(--white);
-    border-radius: .25rem;
+    border-radius: .1rem;
     transition: background-color .3s;
     cursor: pointer;
 }
@@ -762,14 +762,14 @@ button#btn-form:hover {
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    border: .4rem solid var(--p1);
-    border-right-color: transparent;
+    border: .4rem solid #070A1A;
+    border-right-color: var(--p1);
     animation: loadAnime .6s linear infinite;
 
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    translate: -50% -50%;
 }
 
 @keyframes loadAnime {
