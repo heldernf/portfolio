@@ -186,7 +186,7 @@ slideBox.forEach(slide => {
 // LOAD AO ENVIAR O FORMULÁRIO
 const form = document.querySelector("form")
 
-form.addEventListener('submit', function () {
+form.addEventListener('click', function () {
     const body = document.querySelector("body");
     const div = document.createElement("div");
 
