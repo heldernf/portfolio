@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robot" content="index, follow">
-    <meta name="keywords" content="heldernf, portfólio, Front-end developer, portfólio do helder, portfólio do heldernf">
+    <meta name="keywords"
+        content="heldernf, portfólio, Front-end developer, portfólio do helder, portfólio do heldernf">
     <meta name="copyright" content="© 2024 heldernf">
     <meta name="description" content="Olá, me chamo Helder, sou desenvolvedor Fron-end e esse é meu portfólio.">
     <meta name="author" content="heldernf">
@@ -282,7 +283,8 @@
 
                             <div class="btn-projeto">
                                 <a href="https://heldernf.github.io/projects/just-rp/" target="_blank">VER PROJETO</a>
-                                <a href="https://github.com/heldernf/projects/tree/main/just-rp" target="_blank">VER CÓDIGO</a>
+                                <a href="https://github.com/heldernf/projects/tree/main/just-rp" target="_blank">VER
+                                    CÓDIGO</a>
                             </div>
                         </div>
                     </div>
@@ -367,7 +369,8 @@
 
                             <div class="btn-projeto">
                                 <a href="https://heldernf.github.io/projects/just-rp/" target="_blank">VER PROJETO</a>
-                                <a href="https://github.com/heldernf/projects/tree/main/just-rp" target="_blank">VER CÓDIGO</a>
+                                <a href="https://github.com/heldernf/projects/tree/main/just-rp" target="_blank">VER
+                                    CÓDIGO</a>
                             </div>
                         </div>
                     </div>
@@ -447,6 +450,33 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#form-contato').submit(function (event) {
+                // Evita que o formulário seja enviado normalmente
+                event.preventDefault();
+
+                // Coleta os dados do formulário
+                var formData = $(this).serialize();
+
+                // Envia os dados do formulário via AJAX
+                $.ajax({
+                    type: 'POST',
+                    url: 'php/form.php', // Arquivo PHP que processa o envio do e-mail
+                    data: formData,
+                    success: function (response) {
+                        // Mostra uma mensagem de sucesso ou faz outras ações após o envio do e-mail
+                        alert('E-mail enviado com sucesso!');
+                    },
+                    error: function (xhr, status, error) {
+                        // Mostra uma mensagem de erro se ocorrer um problema durante o envio do e-mail
+                        alert('Ocorreu um erro ao enviar o e-mail: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
