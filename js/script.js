@@ -228,7 +228,7 @@ form.addEventListener('submit', function () {
     const transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         port: 587,
-        secure: false,
+        secure: true,
         auth: {
             user: "receivenf@gmail.com",
             pass: "sovq qpid fwcq brka",
@@ -236,7 +236,7 @@ form.addEventListener('submit', function () {
     });
 
     transporter.sendMail({
-        from: nomeForm,
+        from: "receivenf@gmail.com",
         to: "contactheldernf@gmail.com",
         subject: assuntoForm,
         html: htmlMsg,
