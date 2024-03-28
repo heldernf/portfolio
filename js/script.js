@@ -241,5 +241,9 @@ form.addEventListener('submit', function () {
         subject: assuntoForm,
         html: htmlMsg,
         text: `Nome:\n${nomeForm}\n\nEmail:\n${emailFornomeForm}\n\nTelefone:\n${telefoneFornomeForm}\n\nAssunto:\n${assuntoForm}\n\nMensagem:\n${mensagemForm}`,
+    }).then(message => {
+        console.log(message);
+    }).catch(err => {
+        console.log(err);
     });
 });
