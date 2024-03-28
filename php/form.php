@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensagem = $_POST['mensagem'];
 
     $corpo_email = "
-        <h1 style=\"color: #6A3ED4; text-align: center; font-weight: 800; margin: 0; padding: 15px;\">Novo Email</h1>
+        <h1 style=\"color: #6A3ED4; text-align: center; font-weight: 800; margin: 0; padding: 15px; font-size: 18px;\">Novo Email</h1>
         <div style=\"width: 90%; border-radius: 4px; overflow: hidden; margin: 0 auto;\">
             <p style=\"background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;\">Nome:</p>
             <p style=\"background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;\">$nome</p>
@@ -35,6 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mail("contactheldernf@gmail.com", "Novo Email", $corpo_email, $cabecalho)) {
         echo "Obrigado! Seu e-mail foi enviado com sucesso.";
+        header("Location: formulario.html");
     } else {
         echo "Desculpe, houve um problema ao enviar seu e-mail. Por favor, tente novamente mais tarde.";
     }
