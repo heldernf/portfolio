@@ -35,11 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mail("contactheldernf@gmail.com", "Novo Email", $corpo_email, $cabecalho)) {
         echo "Obrigado! Seu e-mail foi enviado com sucesso.";
-        header("Location: formulario.html");
+        header("Location: form.html");
     } else {
         echo "Desculpe, houve um problema ao enviar seu e-mail. Por favor, tente novamente mais tarde.";
     }
 } else {
-    header("Location: formulario.html");
+    header("Location: index.html");
 }
 ?>
