@@ -182,6 +182,7 @@ slideBox.forEach(slide => {
     });
 });
 
+// FORMULÁRIO COM Nodemailer
 // LOAD AO ENVIAR O FORMULÁRIO
 const form = document.querySelector("form")
 
@@ -192,4 +193,53 @@ form.addEventListener('submit', function () {
     body.appendChild(div);
     body.style.overflow = 'hidden';
     div.classList.add('load');
+
+    const nomeForm = document.getElementById('nome').value;
+    const emailForm = document.getElementById('email').value;
+    const telefoneForm = document.getElementById('telefone').value;
+    const assuntoForm = document.getElementById('assunto').value;
+    const mensagemForm = document.getElementById('mensagem').value;
+    const htmlMsg = `
+        <h1 style="color: #6A3ED4; text-align: center; font-weight: 800; margin: 0; padding: 15px;">Novo Email</h1>
+        <div style="width: 90%; border-radius: 4px; overflow: hidden; margin: 0 auto;">
+            <p style="background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;">Nome:</p>
+            <p style="background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;">${nomeForm}</p>
+        </div>
+        <div style="margin: 15px auto; width: 90%; border-radius: 4px; overflow: hidden;">
+            <p style="background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;">Email:</p>
+            <p style="background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;">${emailForm}</p>
+        </div>
+        <div style="margin: 15px auto; width: 90%; border-radius: 4px; overflow: hidden;">
+            <p style="background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;">Telefone:</p>
+            <p style="background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;">${telefoneForm}</p>
+        </div>
+        <div style="margin: 15px auto; width: 90%; border-radius: 4px; overflow: hidden;">
+            <p style="background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;">Assunto:</p>
+            <p style="background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;">${assuntoForm}</p>
+        </div>
+        <div style="margin: 15px auto; width: 90%; border-radius: 4px; overflow: hidden;">
+            <p style="background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;">Mensagem:</p>
+            <p style="background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;">${mensagemForm}</p>
+        </div>
+    `;
+
+    const nodemailer = require("nodemailer");
+
+    const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+            user: "receivenf@gmail.com",
+            pass: "sovq qpid fwcq brka",
+        }
+    });
+
+    transporter.sendMail({
+        from: nomeForm,
+        to: "contactheldernf@gmail.com",
+        subject: assuntoForm,
+        html: htmlMsg,
+        text: `Nome:\n${nomeForm}\n\nEmail:\n${emailFornomeForm}\n\nTelefone:\n${telefoneFornomeForm}\n\nAssunto:\n${assuntoForm}\n\nMensagem:\n${mensagemForm}`,
+    });
 });
