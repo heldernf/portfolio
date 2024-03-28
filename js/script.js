@@ -185,8 +185,8 @@ slideBox.forEach(slide => {
 // FORMULÁRIO COM Nodemailer
 // LOAD AO ENVIAR O FORMULÁRIO
 const form = document.querySelector("form")
-const btn = document.getElementById('btn-form')
-btn.addEventListener('submit', function () {
+
+form.addEventListener('submit', function () {
     const body = document.querySelector("body");
     const div = document.createElement("div");
 
