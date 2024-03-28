@@ -183,7 +183,7 @@ slideBox.forEach(slide => {
 });
 
 // LOAD AO ENVIAR O FORMULÁRIO
-const form = document.querySelector("form");
+const form = document.getElementById("form-contato");
 
 form.addEventListener('submit', function () {
     const body = document.querySelector("body");
