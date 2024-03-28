@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mensagem = $_POST['mensagem'];
 
     // Configurar o e-mail
-    $para = "seu_email@example.com";
+    $para = "contactheldernf@gmail.com";
     $assunto_email = "Novo formulário de contato: $assunto";
     $corpo_email = "Nome: $nome\n";
     $corpo_email .= "E-mail: $email\n";
