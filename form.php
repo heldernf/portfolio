@@ -5,6 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefone = $_POST['telefone'];
     $assunto = $_POST['assunto'];
     $mensagem = $_POST['mensagem'];
+
     $corpo_email = "
         <h1 style=\"color: #6A3ED4; text-align: center; font-weight: 800; margin: 0; padding: 15px;\">Novo Email</h1>
         <div style=\"width: 90%; border-radius: 4px; overflow: hidden; margin: 0 auto;\">
@@ -32,15 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cabecalho = "MIME-Version: 1.0\r\n";
     $cabecalho .= "Content-type: text/html; charset=iso-8859-1\r\n";
 
-    if (mail($para, $assunto_email, $corpo_email, $headers)) {
-        echo "Obrigado! Sua mensagem foi enviada com sucesso.";
-
-        header("Location: formulario.html");
-        exit;
+    if (mail("contactheldernf@gmail.com", "Novo Email", $corpo_email, $cabecalho)) {
+        echo "Obrigado! Seu e-mail foi enviado com sucesso.";
     } else {
-        echo "Desculpe, houve um problema ao enviar sua mensagem. Por favor, tente novamente mais tarde.";
+        echo "Desculpe, houve um problema ao enviar seu e-mail. Por favor, tente novamente mais tarde.";
     }
-
 } else {
     header("Location: formulario.html");
 }
