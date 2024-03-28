@@ -39,21 +39,26 @@
             font-weight: 700;
         }
 
+        h1 span {
+            color: #c92222;
+        }
+
         a {
             margin-top: 4rem;
             background-color: #6A3ED4;
             color: #fff;
             text-decoration: none;
-            padding: 1.3rem;
+            padding: 1.4rem 2rem;
             border-radius: .3rem;
-            font-size: 1.5rem;
-            font-weight: 500;
-            transition: .3s scale;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: .2rem;
+            transition: .3s scale, box-shadow;
         }
 
         a:hover {
             scale: 1.03;
-            box-shadow: 0 0 1rem #6b3ed449;
+            box-shadow: 0 0 1.5rem #6b3ed449;
         }
 
         @media (min-width: 360px) {
@@ -76,9 +81,9 @@
 </head>
 
 <body>
-    <img src="img/form-confirmed.svg" alt="">
-    <h1>Seu email foi enviado com sucesso!</h1>
-    <a href="index.html">VOLTAR AO PORTFÓLIO</a>
+    <img src="../img/form-falha.svg" alt="">
+    <h1>Ouve um <span>erro</span>, tente novamente mais tarde!</h1>
+    <a href="../index.html">VOLTAR</a>
 </body>
 
 </html>
