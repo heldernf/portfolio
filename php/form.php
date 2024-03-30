@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cabecalho = "MIME-Version: 1.0\r\n";
     $cabecalho .= "Content-type: text/html; charset=iso-8859-1\r\n";
 
-    if (mail("contactheldernf@gmail.com", "Novo Email", $corpo_email, $cabecalho)) {
+    if (mail("helderneto2005@gmail.com", "Novo Email", $corpo_email, $cabecalho)) {
         echo "Obrigado! Seu e-mail foi enviado com sucesso.";
         header("Location: ../html/form_sucesso.html");
     } else {
