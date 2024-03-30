@@ -1,4 +1,14 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'path/to/PHPMailer/src/Exception.php';
+require 'path/to/PHPMailer/src/PHPMailer.php';
+require 'path/to/PHPMailer/src/SMTP.php';
+
+require 'vendor/autoload.php';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
@@ -30,17 +40,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
     ";
 
-    $cabecalho = "MIME-Version: 1.0\r\n";
-    $cabecalho .= "Content-type: text/html; charset=iso-8859-1\r\n";
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.hostinger.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'contact@heldernf.com';
+        $mail->Password   = 'ccec oxnw cscu xuyy';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+        $mail->Port       = 465;
 
-    if (mail("contact@heldernf.com", "Novo Email", $corpo_email, $cabecalho)) {
+        $mail->setFrom('contact@heldernf.com', 'Helder Papio');
+        $mail->addAddress('contact@heldernf.com', 'Helder pipi');
+        $mail->addReplyTo($email, 'Information');
+        $mail->isHTML(true);
+        $mail->Subject = $assunto;
+        $mail->Body = $corpo_email;
+        $mail->AltBody = $mensagem;
+
+        $mail->send();
         echo "Obrigado! Seu e-mail foi enviado com sucesso.";
         header("Location: ../html/form_sucesso.html");
-    } else {
+    } catch (Exception $e) {
         echo "Desculpe, houve um problema ao enviar seu e-mail. Por favor, tente novamente mais tarde.";
         header("Location: ../html/form_falha.html");
     }
 } else {
     header("Location: ../index.html");
 }
-?>
