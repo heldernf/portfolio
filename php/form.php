@@ -62,10 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->send();
         echo "Obrigado! Seu e-mail foi enviado com sucesso.";
-        header("Location: ../html/form_sucesso.html");
+
     } catch (Exception $e) {
         echo "Desculpe, houve um problema ao enviar seu e-mail. Por favor, tente novamente mais tarde.";
-        header("Location: ../html/form_falha.html");
+
     }
 } else {
     header("Location: ../index.html");
