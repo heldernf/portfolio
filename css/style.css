@@ -720,6 +720,17 @@ div#container-mensagem textarea {
     margin-top: .5rem;
 }
 
+div#container-mensagem textarea::-webkit-scrollbar {
+    width: .6rem;
+    background-color: var(--borda);
+    cursor: default;
+}
+div#container-mensagem textarea::-webkit-scrollbar-thumb {
+    background-color: var(--p1);
+    cursor: default;
+    border-radius: .3rem;
+}
+
 button#btn-form {
     width: 8rem;
     height: 3.5rem;

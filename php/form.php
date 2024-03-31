@@ -1,14 +1,12 @@
 <?php
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'path/to/PHPMailer/src/Exception.php';
-require 'path/to/PHPMailer/src/PHPMailer.php';
-require 'path/to/PHPMailer/src/SMTP.php';
+require '../vendor/autoload.php';
 
-require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__ . '/../');
+$dotenv->load();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome = $_POST['nome'];
@@ -43,28 +41,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $mail = new PHPMailer(true);
     try {
-        $mail->SMTPDebug = SMTP::DEBUG_SERVER;
         $mail->isSMTP();
         $mail->Host       = 'smtp.hostinger.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'contact@heldernf.com';
-        $mail->Password   = 'ccec oxnw cscu xuyy';
+        $mail->Password   = getenv('PASSWORD');
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port       = 465;
 
-        $mail->setFrom('contact@heldernf.com', 'Helder Papio');
-        $mail->addAddress('contact@heldernf.com', 'Helder pipi');
-        $mail->addReplyTo($email, 'Information');
+        $mail->setFrom('contact@heldernf.com');
+        $mail->addAddress('contact@heldernf.com');
+        $mail->addReplyTo($email);
         $mail->isHTML(true);
         $mail->Subject = $assunto;
         $mail->Body = $corpo_email;
         $mail->AltBody = $mensagem;
 
         $mail->send();
-        echo "Obrigado! Seu e-mail foi enviado com sucesso.";
         header("Location: ../html/form_sucesso.html");
     } catch (Exception $e) {
-        echo "Desculpe, houve um problema ao enviar seu e-mail. Por favor, tente novamente mais tarde.";
         header("Location: ../html/form_falha.html");
     }
 } else {
