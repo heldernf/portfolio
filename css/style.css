@@ -38,14 +38,14 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-    background-color: var(--p1);
+    background-color: var(--borda);
     position: relative;
 }
 
 /* ----- HEADER -- HEADER -- HEADER ----- */
 
 header {
-    background-color: #040715;
+    background-color: #33fa19;
     height: 5rem;
     position: fixed;
     width: 100%;
