@@ -38,10 +38,8 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-    background-color: var(--borda);
+    background-color: var(--p1);
     position: relative;
-    overflow-x: hidden;
-    overflow-x: hidden;
 }
 
 /* ----- HEADER -- HEADER -- HEADER ----- */
