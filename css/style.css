@@ -38,9 +38,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-    background-color: var(--borda);
-    position: relative;
-    overflow-x: auto;
+
 }
 
 /* ----- HEADER -- HEADER -- HEADER ----- */
