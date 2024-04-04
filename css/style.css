@@ -40,6 +40,7 @@ html::-webkit-scrollbar-thumb {
 body {
     background-color: var(--borda);
     position: relative;
+    overflow-x: hidden;
 }
 
 /* ----- HEADER -- HEADER -- HEADER ----- */
@@ -277,7 +278,7 @@ div#box-about a#a-contatar {
 }
 
 div#box-about a#a-contatar:hover {
-    letter-spacing: .5rem;
+    letter-spacing: .4rem;
 }
 
 /* ----- SECTION QUALIDADES -- SECTION QUALIDADES -- SECTION QUALIDADES ----- */

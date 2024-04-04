@@ -1,3 +1,14 @@
+<?php
+    session_start();
+
+    if (!isset($_SESSION['form_submitted']) || !$_SESSION['form_submitted']) {
+        header("Location: ../index.html");
+        exit();
+    }
+
+    unset($_SESSION['form_submitted']);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 

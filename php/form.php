@@ -9,13 +9,14 @@ $dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__ . '/../');
 $dotenv->load();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $assunto = $_POST['assunto'];
-    $mensagem = $_POST['mensagem'];
+    $nome = $_POST["nome"];
+    $email = $_POST["email"];
+    $telefone = $_POST["telefone"];
+    $assunto = $_POST["assunto"];
+    $mensagem = $_POST["mensagem"];
 
-    $corpo_email = "
+    $mensagem_txt = "Nome:\n" . $_POST["nome"] . "\n\nEmai:\n" . $_POST["email"] . "\n\nTelefone:\n" . $_POST["telefone"] . "\n\nAssunto:\n" . $_POST["assunto"] . "\n\nMensagem:\n" . $_POST["mensagem"];
+    $mensagem_html = "
         <div style=\"padding-bottom: 15px;\">
             <h1 style=\"color: #6A3ED4; text-align: center; font-weight: 800; margin: 0; padding: 15px; font-size: 30px;\">NOVO EMAIL</h1>
             <div style=\"width: 90%; border-radius: 4px; overflow: hidden; margin: 0 auto;\">
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div style=\"margin: 15px auto 0 auto; width: 90%; border-radius: 4px; overflow: hidden;\">
                 <p style=\"background-color: #6A3ED4; color: #fff; margin: 0; padding: 14px 12px; font-size: 16px; font-weight: 700;\">Mensagem:</p>
-                <p style=\"background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;\">$mensagem</p>
+                <p style=\"background-color: #e2e2e2; color: #6A3ED4; margin: 0; padding: 14px 12px; font-size: 14px; font-weight: 600;\">" . nl2br($mensagem) . "</p>
             </div>
         </div>
     ";
@@ -44,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
+        $mail->CharSet    = 'UTF-8';
         $mail->Host       = 'smtp.hostinger.com';
         $mail->SMTPAuth   = true;
         $mail->Username   = 'contact@heldernf.com';
@@ -56,13 +58,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->addReplyTo($email);
         $mail->isHTML(true);
         $mail->Subject = $assunto;
-        $mail->Body = $corpo_email;
-        $mail->AltBody = $mensagem;
+        $mail->Body = $mensagem_html;
+        $mail->AltBody = $mensagem_txt;
 
         $mail->send();
-        header("Location: ../html/form_sucesso.html");
+
+        session_start();
+        $_SESSION['form_submitted'] = true;
+
+        header("Location: sucesso_form.php");
+        exit();
     } catch (Exception $e) {
-        header("Location: ../html/form_falha.html");
+        session_start();
+        $_SESSION['form_submitted'] = true;
+        
+        header("Location: all_falha.php");
+        exit();
     }
 } else {
     header("Location: ../index.html");

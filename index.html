@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mq.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -64,9 +65,9 @@
     <main>
         <section id="inicio">
             <div id="container-inicio">
-                <img src="img/inicio-figura.svg" alt="">
+                <img src="img/inicio-figura.svg" alt="" data-aos="fade-right">
 
-                <div id="box-about">
+                <div id="box-about" data-aos="fade-left">
                     <p>
                         Olá, me chamo Helder, atualmente sou um desenvolvedor Front-end. Estudo linguagens de
                         programação
@@ -112,10 +113,10 @@
 
         <section id="qualidades">
             <div id="container-qualidades">
-                <h1>Qualidades</h1>
+                <h1 data-aos="fade-up">Qualidades</h1>
 
                 <div id="container-box-qualidades">
-                    <div class="box-qualidade">
+                    <div class="box-qualidade" data-aos="fade-up">
                         <div>
                             <h2>Código Limpo</h2>
                             <svg width="45" height="40" viewBox="0 0 45 40" fill="none"
@@ -141,7 +142,7 @@
                         </h3>
                     </div>
 
-                    <div class="box-qualidade">
+                    <div class="box-qualidade" data-aos="fade-up">
                         <div>
                             <h2>Interfaces com Fidelidade</h2>
                             <svg width="42" height="40" viewBox="0 0 42 40" fill="none"
@@ -166,7 +167,7 @@
                         </h3>
                     </div>
 
-                    <div class="box-qualidade">
+                    <div class="box-qualidade" data-aos="fade-up">
                         <div>
                             <h2>UX/UI Design</h2>
                             <svg width="42" height="38" viewBox="0 0 42 38" fill="none"
@@ -204,11 +205,11 @@
 
         <section id="projetos">
             <div id="container-projetos">
-                <h1>Projetos</h1>
+                <h1 data-aos="fade-up">Projetos</h1>
 
                 <div id="container-box-projetos">
 
-                    <div class="box-projeto">
+                    <div class="box-projeto" data-aos="fade-right">
                         <h2>
                             Just City
                             <svg viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -293,7 +294,7 @@
                         </div>
                     </div>
 
-                    <div class="box-projeto">
+                    <div class="box-projeto" data-aos="fade-left">
                         <h2>
                             Just City
                             <svg viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -383,7 +384,7 @@
         </section>
 
         <section id="contato">
-            <form action="php/form.php" method="POST" id="form-contato">
+            <form action="php/form.php" method="POST" id="form-contato" data-aos="fade-up">
                 <svg viewBox="0 0 66 41" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M2.93828 6.59362C3.06255 8.25237 2.11663 36.1205 5.26833 37.6953C8.42004 39.2701 59.1727 37.9731 62.0327 36.1206C64.8928 34.2681 62.0613 4.53497 58.8947 2.96098C55.7281 1.38699 4.16589 5.5809 2.65901 6.60825C1.15213 7.63561 27.6262 22.4117 30.6407 22.2239C33.6552 22.036 57.6592 4.10666 59.1813 3.08597"
@@ -453,6 +454,10 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
