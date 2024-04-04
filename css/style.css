@@ -45,7 +45,7 @@ body {
 /* ----- HEADER -- HEADER -- HEADER ----- */
 
 header {
-    background-color: #33fa19;
+    background-color: #040715;
     height: 5rem;
     position: fixed;
     width: 100%;
@@ -53,7 +53,7 @@ header {
     z-index: 2;
 }
 
-header div#container-header {
+div#container-header {
     height: 100%;
     display: flex;
     justify-content: space-between;
