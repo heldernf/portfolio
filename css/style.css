@@ -187,6 +187,10 @@ main {
 
 /* ----- SECTION INÍCIO -- SECTION INÍCIO -- SECTION INÍCIO ----- */
 
+main section {
+    overflow: hidden;
+}
+
 main section>div {
     max-width: 128rem;
     margin: 0 auto;
@@ -725,6 +729,7 @@ div#container-mensagem textarea::-webkit-scrollbar {
     background-color: var(--borda);
     cursor: default;
 }
+
 div#container-mensagem textarea::-webkit-scrollbar-thumb {
     background-color: var(--p1);
     cursor: default;
@@ -827,4 +832,54 @@ footer p {
     font-size: 1rem;
     font-weight: 700;
     width: max-content;
+}
+
+/* ANIMATION FADE JS - ANIMATION FADE JS */
+
+.fade-up, .fade-right, .fade-left, .fade-boom {
+    opacity: 0;
+}
+
+@keyframes up {
+    from {
+        translate: 0 250px;
+    }
+    
+    to {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes right {
+    from {
+        translate: -250px 0;
+    }
+    
+    to {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes left {
+    from {
+        translate: 250px 0;
+    }
+    
+    to {
+        translate: 0 0;
+        opacity: 1;
+    }
+}
+
+@keyframes boom {
+    from {
+        scale: 0;
+    }
+    
+    to {
+        scale: 1;
+        opacity: 1;
+    }
 }
