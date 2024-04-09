@@ -114,17 +114,12 @@ ul#menu-options {
 
     position: absolute;
     top: calc(100% + 1rem);
-}
-
-/*JS --- JS*/
-ul.visible {
-    left: 50%;
+    left: 150%;
     transform: translateX(-50%);
 }
 
-/*JS --- JS*/
-ul.invisible {
-    left: 100%;
+ul.open {
+    left: 50% !important;
 }
 
 ul#menu-options li {
@@ -174,7 +169,7 @@ ul#menu-options li a#active::after {
     }
 
     100% {
-        width: .5rem;
+        width: 0;
         left: 100%;
     }
 }

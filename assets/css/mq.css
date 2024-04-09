@@ -147,7 +147,7 @@
         width: max-content;
         gap: 0 2.4rem;
         position: relative;
-        left: 0;
+        left: 50%;
     }
 
     ul#menu-options li {
