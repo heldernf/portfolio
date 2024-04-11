@@ -1,11 +1,15 @@
 const path = require('path');
 
 module.exports = {
-    entry: {
-        main: './assets/js/main.js'
-    },
+    mode: 'production',
+    entry: './assets/js/main.js',
     output: {
-        path: path.resolve(__dirname, 'assets/js/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.[contenthash].js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [
+            { test: /\.css$/, use: ['style-loader', 'css-loader'] },
+        ]
     }
-};
+}
