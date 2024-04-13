@@ -1,8 +1,8 @@
 const path = require('path');
 const glob = require('glob');
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const miniCssWebpackPlugin = require('mini-css-extract-plugin');
-const copyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -19,8 +19,8 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: miniCssWebpackPlugin.loader },
-                    'css-loader'
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
                 ]
             },
             {
@@ -35,22 +35,22 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new htmlWebpackPlugin({
+        new HtmlWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
             favicon: './favicon.ico'
         }),
-        new miniCssWebpackPlugin({
+        new MiniCssExtractPlugin({
             filename: './assets/css/main.[contenthash].css'
         }),
-        new copyWebpackPlugin({
+        new CopyWebpackPlugin({
             patterns: [
                 { from: './php/', to: 'php' },
                 { from: '.env', to: './' },
                 { from: '.htaccess', to: './' },
                 { from: 'composer.json', to: './' }
             ]
-        }),
+        })
     ]
 }
 
