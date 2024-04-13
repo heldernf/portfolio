@@ -1,11 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssWebpackPlugin = require('mini-css-extract-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const glob = require('glob');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const miniCssWebpackPlugin = require('mini-css-extract-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
     entry: {
         main: ['./assets/js/main.js', ...getImages()]
     },
@@ -18,7 +19,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    { loader: MiniCssWebpackPlugin.loader },
+                    { loader: miniCssWebpackPlugin.loader },
                     'css-loader'
                 ]
             },
@@ -33,22 +34,23 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
+        new CleanWebpackPlugin(),
+        new htmlWebpackPlugin({
             filename: 'index.html',
             template: './index.html',
         }),
-        new MiniCssWebpackPlugin({
+        new miniCssWebpackPlugin({
             filename: './assets/css/main.[contenthash].css'
         }),
-        new CopyWebpackPlugin({
+        new copyWebpackPlugin({
             patterns: [
                 { from: './php/', to: 'php' },
-                { from: '.env', to: './'},
-                { from: '.htaccess', to: './'},
-                { from: 'composer.json', to: './'},
-                { from: 'package.json', to: './'},
+                { from: '.env', to: './' },
+                { from: '.htaccess', to: './' },
+                { from: 'composer.json', to: './' },
+                { from: 'package.json', to: './' },
             ]
-        })
+        }),
     ]
 }
 

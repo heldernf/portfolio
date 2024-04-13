@@ -1,10 +1,4 @@
-/*!***********************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/main.css ***!
-  \***********************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap);
-/*!***************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/main.css (1) ***!
-  \***************************************************************************/
 :root {
     --white: white;
     --black: black;
@@ -883,9 +877,6 @@ footer p {
         opacity: 1;
     }
 }
-/*!********************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./assets/css/media_queries.css ***!
-  \********************************************************************************/
 @media (min-width: 428px) {
     header {
         height: 6rem;
