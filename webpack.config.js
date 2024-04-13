@@ -44,6 +44,7 @@ module.exports = {
         }),
         new copyWebpackPlugin({
             patterns: [
+                { from: './assets/img/favicon.ico', to: './assets/img/' },
                 { from: './php/', to: 'php' },
                 { from: '.env', to: './' },
                 { from: '.htaccess', to: './' },
