@@ -12,7 +12,7 @@ module.exports = {
     },
     output: {
         filename: 'assets/js/bundle.[contenthash].js',
-        path: path.resolve(__dirname, 'home')
+        path: path.resolve(__dirname, 'public')
     },
     module: {
         rules: [
@@ -47,8 +47,7 @@ module.exports = {
                 { from: './php/', to: 'php' },
                 { from: '.env', to: './' },
                 { from: '.htaccess', to: './' },
-                { from: 'composer.json', to: './' },
-                { from: 'package.json', to: './' },
+                { from: 'composer.json', to: './' }
             ]
         }),
     ]
