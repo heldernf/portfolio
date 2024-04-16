@@ -24,4 +24,4 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "Push da pasta de produção para o repositório privado"
-          git push https://$PAT@github.com/heldernf/portfolio-priv main
+          git push https://github.com/heldernf/tst.git main
