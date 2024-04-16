@@ -49,7 +49,7 @@ module.exports = {
                 { from: '.env', to: './' },
                 { from: '.htaccess', to: './' },
                 { from: 'composer.json', to: './' },
-                { from: 'tst.txt', to: './' }
+                { from: 'test.txt', to: './' }
             ]
         })
     ]
