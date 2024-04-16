@@ -1,4 +1,4 @@
-name: Clone pasta após push
+name: Push Procution
 
 on:
   push:
@@ -15,17 +15,12 @@ jobs:
         with:
           repository: heldernf/portfolio
 
-      - name: Copiar pasta public
-        run: |
-          cp -r public $GITHUB_WORKSPACE/public
-          ls -la $GITHUB_WORKSPACE
-
-      - name: Commit e push para o novo repositório
+      - name: Push da public(pasta de produção) para o repositório privado(produção)
         run: |
           cd $GITHUB_WORKSPACE/public
           git init
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
-          git commit -m "Clone pasta após push"
+          git commit -m "Push da pasta de produção para o repositório privado"
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/heldernf/portfolio-priv.git main
