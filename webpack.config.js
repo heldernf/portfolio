@@ -48,7 +48,8 @@ module.exports = {
                 { from: './php/', to: 'php' },
                 { from: '.env', to: './' },
                 { from: '.htaccess', to: './' },
-                { from: 'composer.json', to: './' }
+                { from: 'composer.json', to: './' },
+                { from: 'tst.txt', to: './' }
             ]
         })
     ]
