@@ -17,7 +17,7 @@ jobs:
 
       - name: Push da public(pasta de produção) para o repositório privado(produção)
         run: |
-          cd $GITHUB_WORKSPACE
+          cd $GITHUB_WORKSPACE/public
           git init
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
