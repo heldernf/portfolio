@@ -24,3 +24,4 @@ jobs:
           git add .
           git commit -m "Push da pasta de produção para o repositório privado"
           git push --set-upstream https://github.com/heldernf/portfolio-priv master
+          git push https://github.com/heldernf/portfolio-priv
