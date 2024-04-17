@@ -3,25 +3,19 @@ name: Push Procution
 on:
   push:
     branches:
-      - main
+      [main]
 
 jobs:
-  clone:
+  push_to_production:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          repository: heldernf/portfolio
-          ref: main
 
-      - name: Push da public(pasta de produção) para o repositório privado(produção)
+      - name: Configurar Git remoto
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git fetch --prune
-          git reset --hard origin/main
-          git remote remove origin
-          git remote add origin git@github.com:heldernf/portfolio-priv.git
-          git push origin main
+          git remote add B heldernf/portfolio-priv
+
+      - name: Fazer push para o repositório B
+        run: git push B main
