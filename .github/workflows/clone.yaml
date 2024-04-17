@@ -17,7 +17,6 @@ jobs:
 
       - name: Push da public(pasta de produção) para o repositório privado(produção)
         run: |
-          git remote remove origin
           git remote add production https://github.com/heldernf/tst.git
           git config --global init.defaultBranch main
           git init
