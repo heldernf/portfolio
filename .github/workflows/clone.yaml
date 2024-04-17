@@ -16,6 +16,6 @@ jobs:
 
       - name: Push to production
         run: |
-          git remote add production git@github.com:heldernf/tst.git
+          git remote add production git@github.com:heldernf/portfolio-priv.git
           git pull
-          git push --force production main
+          git push production main
