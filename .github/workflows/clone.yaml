@@ -12,6 +12,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          passphrase: ${{ secrects.SSH_PASSPHRASE }}
+          fetch-depth: 0
 
       - name: Configurar Git remoto
         run: |
