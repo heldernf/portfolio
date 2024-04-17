@@ -17,5 +17,8 @@ jobs:
       - name: Push to production
         run: |
           git remote add production git@github.com:heldernf/portfolio-priv.git
+          git init
           git pull
-          git push --force production main
+          git add .
+          git commit -m "."
+          git push production main
