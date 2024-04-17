@@ -18,7 +18,6 @@ jobs:
 
       - name: Push da public(pasta de produção) para o repositório privado(produção)
         run: |
-          git remote add origin https://github.com/heldernf/portfolio-priv/
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git fetch --prune
