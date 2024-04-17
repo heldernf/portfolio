@@ -17,7 +17,6 @@ jobs:
 
       - name: Push da public(pasta de produção) para o repositório privado(produção)
         run: |
-          git remote add production https://github.com/heldernf/portfolio-priv
           git config --global init.defaultBranch main
           git init
           git config --local user.email "actions@github.com"
