@@ -15,7 +15,7 @@ jobs:
 
       - name: Configurar Git remoto
         run: |
-          git remote add B https://github.com/heldernf/tst.git
+          git remote add production https://github.com/heldernf/portfolio-priv
 
-      - name: Fazer push para o repositório B
-        run: git push B main
+      - name: Fazer push para o repositório de production
+        run: git push production main
