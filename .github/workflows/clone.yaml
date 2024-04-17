@@ -25,4 +25,4 @@ jobs:
           git push origin main
       
       - name: prints
-        run: echo git remote -v
+        run: git remote -v
