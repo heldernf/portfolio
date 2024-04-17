@@ -21,6 +21,7 @@ jobs:
           git init
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          git remote add orgin https://github.com/heldernf/portfolio-priv
           git add .
           git commit -m "Push da pasta de produção para o repositório privado"
-          git push https://github.com/heldernf/tst main
+          git push origin main
