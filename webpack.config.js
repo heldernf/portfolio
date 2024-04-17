@@ -45,7 +45,6 @@ module.exports = {
         }),
         new CopyWebpackPlugin({
             patterns: [
-                { from: './.github', to: '.github' },
                 { from: './php/', to: 'php' },
                 { from: '.env', to: './' },
                 { from: '.htaccess', to: './' },
