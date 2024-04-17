@@ -15,11 +15,13 @@ jobs:
         with:
           repository: heldernf/portfolio
           ref: main
-
-      - name: Push da public(pasta de produção) para o repositório privado(produção)
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git fetch --prune
-          git reset --hard origin/main
-          git push origin main
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "Automatically created pull request"
+          title: "Automatically created pull request"
+          body: "This pull request was automatically created by GitHub Actions."
+          branch: main
+          base: main
+          repository: heldernf/portfolio-priv
