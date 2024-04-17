@@ -22,6 +22,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git fetch --prune
           git reset --hard origin/main
-          git remote remove origin
-          git remote add origin https://github.com/heldernf/portfolio-priv/
           git push origin main
