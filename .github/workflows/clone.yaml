@@ -21,6 +21,4 @@ jobs:
           git config --global user.email "github@noreplay.com"
           git config --global user.name "GitHub Actions"
           git pull
-          git add .
-          git commit -m "."
           git push production main
