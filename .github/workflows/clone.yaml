@@ -17,8 +17,5 @@ jobs:
       - name: Push to production
         run: |
           git remote add production git@github.com:heldernf/tst.git
-          git init
-          git config --global user.email "github@noreplay.com"
-          git config --global user.name "GitHub Actions"
           git pull
-          git push production main
+          git push --force production main
