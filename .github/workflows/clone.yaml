@@ -3,7 +3,7 @@ name: Push Procution
 on:
   push:
     branches:
-      [main]
+      - main
 
 jobs:
   push_to_production:
@@ -13,9 +13,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          passphrase: ${{ secrets.SSH_PASSPHRASE }}
-          fetch-depth: 0
+          SSH_PRIVATE_KEY: ${{secrets.SSH_KEY}}
 
       - name: Configurar Git remoto
         run: |
