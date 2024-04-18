@@ -18,10 +18,10 @@ jobs:
           ssh-key: ${{ secrets.SSH_KEY }}
           path: portfolio-priv
 
-      - name: Copy Folder to Repo Production
+      - name: Copy Files to Repo Production
         run: |
           mkdir -p portfolio-priv/public/
-          cp -r ./public/* portfolio-priv/public/
+          cp -r ./public/* portfolio-priv/
         
       - name: Push to Repo Production
         run: |
