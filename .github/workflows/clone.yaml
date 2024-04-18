@@ -20,7 +20,7 @@ jobs:
 
       - name: Copy Folder to Repo Production
         run: |
-          cp -r ./public/* portfolio-priv/public/
+          cp -r ./public/* portfolio/public/
 
       - name: Push to Repo Production
         run: |
