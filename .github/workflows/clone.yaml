@@ -11,6 +11,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Checkout priv
+        uses: actions/checkout@v4
+        with:
+          repository: heldernf/portfolio-priv
+          ssh-key: ${{ secrets.SSH_KEY }}
+          path: portfolio-priv
+
       - name: Push to Repo Production
         run: |
           cd public
