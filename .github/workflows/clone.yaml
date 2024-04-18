@@ -20,6 +20,7 @@ jobs:
   
       - name: run Webpack
         run: |
+            npm i
             npm run build
         
       - name: Push to Repo Production
