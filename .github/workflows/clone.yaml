@@ -1,5 +1,5 @@
 name: Push Folder to Another Repository
-on: 
+on:
   push:
     branches:
       - main
@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Checkout Repo Production
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           repository: heldernf/portfolio-priv
           ssh-key: ${{ secrets.SSH_KEY }}
@@ -20,13 +20,13 @@ jobs:
 
       - name: Copy Folder to Repo Production
         run: |
-          cp -r ./public/* portfolio/public/
+          cp -r ./public/* portfolio-priv/public/
 
       - name: Push to Repo Production
         run: |
           cd portfolio-priv
-          git config user.name "GitHub Actions"
-          git config user.email "github@noreplay.com"
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
           git add .
-          git commit -m "Up to Production"
-          git push
+          git commit -m "Up to Production" -q
+          git push --force
