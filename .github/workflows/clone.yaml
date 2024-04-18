@@ -13,9 +13,10 @@ jobs:
 
       - name: Push to Repo Production
         run: |
+          cd public
+          git config --global init.defaultBranch main
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@users.noreply.github.com"
-          cd public
           git init
           git add .
           git commit -m "Push to Production" -q
