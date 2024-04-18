@@ -12,6 +12,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Dependences
+        run: |
+          cd public
+          composer install
+
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@main
         with:
