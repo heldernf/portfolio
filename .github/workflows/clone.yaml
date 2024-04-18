@@ -13,7 +13,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           ssh-key: ${{secrets.SSH_KEY}}
+          repository: heldernf/portfolio
+          token: ${{ secrets.PAT }}
+          path: heldernf/portfolio-priv
 
       - name: Push to production
         run: |
-          git push git@github.com:heldernf/portfolio-priv.git main
+          git remote add production git@github.com:heldernf/portfolio-priv.git
+          git pull
+          git push production main
