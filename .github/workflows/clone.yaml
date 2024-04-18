@@ -18,6 +18,4 @@ jobs:
 
       - name: Push to production
         run: |
-          git remote add production git@github.com:heldernf/portfolio-priv.git
-          git pull
-          git push production main
+          git push git@github.com:heldernf/portfolio-priv.git main
