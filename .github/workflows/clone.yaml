@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: heldernf/portfolio-priv
-          token: ${{ secrets.SSH_KEY }}
+          ssh-key: ${{ secrets.SSH_KEY }}
           path: portfolio-priv
 
       - name: Copy Folder to Repo Production
