@@ -25,8 +25,8 @@ jobs:
 
       - name: Copy Folder to Repo Production
         run: |
-          mkdir -p portfolio-priv/
-          cp -r ./public/* portfolio-priv/
+          mkdir -p portfolio-priv/public/
+          cp -r ./public/* portfolio-priv/public/
 
       - name: Push to Repo Production
         run: |
