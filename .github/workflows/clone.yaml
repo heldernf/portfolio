@@ -19,4 +19,4 @@ jobs:
           git init
           git add .
           git commit -m "Push to Production" -q
-          git push --force git@github.com:heldernf/portfolio-priv.git master
+          git push --force git@github.com:heldernf/portfolio-priv.git main
