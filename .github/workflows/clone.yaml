@@ -17,17 +17,17 @@ jobs:
           repository: heldernf/portfolio-priv
           ssh-key: ${{ secrets.SSH_KEY }}
           path: portfolio-priv
-
-      - name: Copy Folder to Repo Production
+  
+      - name: run Webpack
         run: |
-          mkdir -p portfolio-priv/public/
-          cp -r ./public/* portfolio-priv/public/
+            npm i
+            npm run build
         
       - name: Push to Repo Production
         run: |
-          cd portfolio-priv
+          cd public
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           git add .
           git commit -m "Up to Production" -q
-          git push --force origin main
+          git push --force https://github.com/heldernf/portfolio-priv main
