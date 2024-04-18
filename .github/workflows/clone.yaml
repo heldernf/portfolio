@@ -1,17 +1,37 @@
-name: Push Procution
-
-on:
+name: Push Folder to Another Repository
+on: 
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  build:
+  copy-folder:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Push to production
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Copy Folder
         run: |
-          git clone https://github.com/heldernf/portfolio
-          git remote add production git@github.com:heldernf/portfolio-priv.git
-          git pull
-          git push production main
+          mkdir public
+          cp -r ./public/* public/
+
+      - name: Checkout Repo Production
+        uses: actions/checkout@v2
+        with:
+          repository: heldernf/portfolio-priv
+          token: ${{ secrets.SSH_KEY }}
+          path: portfolio-priv
+
+      - name: Copy Folder to Repo Production
+        run: |
+          cp -r public/* portfolio-priv/public/
+
+      - name: Push to Repo Production
+        run: |
+          cd portfolio-priv
+          git config user.name "GitHub Actions"
+          git config user.email "github@noreplay.com"
+          git add .
+          git commit -m "Up to Production"
+          git push
