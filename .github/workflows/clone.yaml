@@ -11,13 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo ${{ secrets.SSH_PORTFOLIO_PROD }} > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-
       - name: Push to Repo Production
         run: |
           cd public
@@ -25,6 +18,7 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@users.noreply.github.com"
           git init
+          git remote origin git@github.com:heldernf/portfolio-priv.git
           git add .
           git commit -m "Push to Production" -q
-          git push --force git@github.com:heldernf/portfolio-priv.git main
+          git push --force origin main
