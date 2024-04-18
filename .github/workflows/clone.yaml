@@ -9,26 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Checkout Repo Production
-        uses: actions/checkout@v4
+      - name: Deploy to Staging server
+        uses: easingthemes/ssh-deploy@main
         with:
-          repository: heldernf/portfolio-priv
-          ssh-key: ${{ secrets.SSH_KEY }}
-          path: portfolio-priv
-
-      - name: Copy archives
-        run: |
-          mkdir -p portfolio-priv/
-          cp -r ./public/* portfolio-priv/
-
-      - name: Push to repository production
-        run: |
-          cd portfolio-priv
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "github@noreply.com"
-          git add .
-          git commit -m "Up to Production" -q
-          git push --force
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SOURCE: "./tst"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
