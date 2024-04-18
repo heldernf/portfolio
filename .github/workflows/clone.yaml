@@ -9,16 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ssh-key: ${{secrets.SSH_KEY}}
-          repository: heldernf/portfolio
-          token: ${{ secrets.PAT }}
-          path: heldernf/portfolio-priv
-
       - name: Push to production
         run: |
+          git clone https://github.com/heldernf/portfolio
           git remote add production git@github.com:heldernf/portfolio-priv.git
           git pull
           git push production main
