@@ -13,6 +13,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           ssh-key: ${{secrets.SSH_KEY}}
+          repository: heldernf/portfolio
+          path: public
 
       - name: Push to production
         run: |
