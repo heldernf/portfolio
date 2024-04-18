@@ -45,6 +45,8 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 { from: './php/', to: 'php' },
+                { from: '.env', to: './' },
+                { from: '.htaccess', to: './' },
                 { from: 'composer.json', to: './' }
             ]
         })
