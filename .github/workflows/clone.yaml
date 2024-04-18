@@ -11,11 +11,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Copy Folder
-        run: |
-          mkdir public
-          cp -r ./public/* public/
-
       - name: Checkout Repo Production
         uses: actions/checkout@v2
         with:
@@ -25,7 +20,7 @@ jobs:
 
       - name: Copy Folder to Repo Production
         run: |
-          cp -r public/* portfolio-priv/public/
+          cp -r ./public/* portfolio-priv/public/
 
       - name: Push to Repo Production
         run: |
