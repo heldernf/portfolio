@@ -19,12 +19,7 @@ jobs:
 
       - name: Run a command with interactive prompt
         run: |
-          expect -c '
-            spawn ${{ secrets.SSH_LOGIN_COMMAND }}
-            expect ${{ secrets.SSH_LOGIN_COMMAND }}"'s password: "
-            send ${{ secrets.SSH_LOGIN_PASSWORD }}\r
-            interact
-          '
+          ${{ secrets.SSH_LOGIN_COMMAND }}
 
       - name: Deploy to hostinger
         uses: easingthemes/ssh-deploy@main
