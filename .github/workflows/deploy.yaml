@@ -26,4 +26,7 @@ jobs:
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           SOURCE: "./public/*"
           TARGET: ${{ secrets.REMOTE_TARGET }}
-          SSH_CMD_ARGS: rm -rf ./tst
+
+      - name: Delete folder on remote host
+        run: |
+          ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} -p ${{ secrets.REMOTE_PORT }} 'rm -rf /tst'
