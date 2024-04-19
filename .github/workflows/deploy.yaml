@@ -27,6 +27,7 @@ jobs:
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
             rm -rf *
+            find . -type f -name '' -exec rm {} \;
 
       - name: Deploy to hostinger
         uses: easingthemes/ssh-deploy@main
