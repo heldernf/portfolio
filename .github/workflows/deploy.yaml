@@ -26,3 +26,4 @@ jobs:
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           SOURCE: "./public/*"
           TARGET: ${{ secrets.REMOTE_TARGET }}
+          SSH_CMD_ARGS: rm -rf ./tst
