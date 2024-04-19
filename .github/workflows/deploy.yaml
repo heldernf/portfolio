@@ -27,7 +27,7 @@ jobs:
           SOURCE: "./public/*"
           TARGET: ${{ secrets.REMOTE_TARGET }}
 
-      - name: SSH deploy
+      - name: SSH Commands
         uses: appleboy/ssh-action@master
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -35,5 +35,4 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            pwd
-            
+            ls
