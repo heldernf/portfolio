@@ -24,6 +24,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
+          script_stop: true
           script: |
             cd ${{ secrets.REMOTE_TARGET }}
             rm -rf *
