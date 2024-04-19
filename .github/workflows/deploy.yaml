@@ -26,14 +26,3 @@ jobs:
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           SOURCE: "./public/*"
           TARGET: ${{ secrets.REMOTE_TARGET }}
-
-      - name: SSH Commands
-        uses: appleboy/ssh-action@master
-        with:
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          host: ${{ secrets.REMOTE_HOST }}
-          username: ${{ secrets.REMOTE_USER }}
-          port: ${{ secrets.REMOTE_PORT }}
-          script: |
-            cd ${{ secrets.REMOTE_TARGET }}
-            rm -rf *
