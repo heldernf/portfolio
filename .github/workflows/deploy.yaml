@@ -20,6 +20,7 @@ jobs:
       - name: Run a command with interactive prompt
         run: |
           ${{ secrets.SSH_LOGIN_COMMAND }}
+          ${{ secrets.SSH_LOGIN_PASSWORD }}
 
       - name: Deploy to hostinger
         uses: easingthemes/ssh-deploy@main
