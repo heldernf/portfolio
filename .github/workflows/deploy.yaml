@@ -27,4 +27,4 @@ jobs:
 
       - name: Prompt
         run: |
-          rm -rf *
+          pwd
