@@ -35,4 +35,5 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
+            cd ${{ secrets.REMOTE_TARGET }}
             ls
