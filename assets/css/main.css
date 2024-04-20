@@ -1,4 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: "Archivo";
+    src: url(../fonts/archivo.ttf);
+}
+
+@font-face {
+    font-family: "Oxanium";
+    src: url(../fonts/oxanium.ttf)
+}
+
+@font-face {
+    font-family: "Outfit";
+    src: url(../fonts/outfit.ttf);
+}
 
 :root {
     --white: white;
@@ -15,7 +28,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: "Archivo", sans-serif;
+    font-family: "Outfit", sans-serif;
 }
 
 *:focus-visible {
@@ -42,6 +55,11 @@ body {
     position: relative;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Oxanium";
+    font-weight: 600;
+}
+
 /* ----- HEADER -- HEADER -- HEADER ----- */
 
 header {
@@ -53,7 +71,7 @@ header {
     z-index: 2;
 }
 
-div#container-header {
+#container-header {
     height: 100%;
     display: flex;
     justify-content: space-between;
@@ -62,13 +80,13 @@ div#container-header {
     position: relative;
 }
 
-div#container-header a svg {
+#logo {
     display: block;
     width: 3rem;
     fill: var(--p1);
 }
 
-div#menu-trigger {
+#menu-trigger {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +97,7 @@ div#menu-trigger {
     cursor: pointer;
 }
 
-div#menu-trigger span {
+#menu-trigger span {
     display: block;
     width: 2rem;
     height: .2rem;
@@ -90,20 +108,20 @@ div#menu-trigger span {
 }
 
 /*JS --- JS*/
-div.animeMenu>span:nth-child(1) {
+.animeMenu>span:nth-child(1) {
     transform-origin: center;
     margin: 0 0 !important;
     transform: translateY(.1rem) rotate(225deg);
 }
 
 /*JS --- JS*/
-div.animeMenu>span:nth-child(2) {
+.animeMenu>span:nth-child(2) {
     margin: 0 0 !important;
     transform: translateY(-.1rem) rotate(-225deg);
     transform-origin: center;
 }
 
-ul#menu-options {
+#menu-options {
     width: 90%;
     display: flex;
     list-style: none;
@@ -118,35 +136,35 @@ ul#menu-options {
     transform: translateX(-50%);
 }
 
-ul.open {
+.open {
     left: 50% !important;
 }
 
-ul#menu-options li {
+#menu-options li {
     width: 100%;
 }
 
-ul#menu-options li a {
+#menu-options li a {
     display: block;
     padding: 1.6rem 0;
     color: var(--texto2);
     text-decoration: none;
     font-size: 1.05rem;
     text-align: center;
-    font-weight: 600;
+    font-weight: 400;
     transition: font-weight .3s;
 
     position: relative;
 }
 
 /*JS --- JS*/
-ul#menu-options li a#active {
-    font-weight: 700;
+#menu-options li a#active {
+    font-weight: 600;
     overflow: hidden;
 }
 
 /*JS --- JS*/
-ul#menu-options li a#active::after {
+#menu-options li a#active::after {
     content: '';
     display: block;
     height: .15rem;
@@ -191,50 +209,52 @@ main section>div {
     margin: 0 auto;
 }
 
-section#inicio {
+#inicio {
     background-color: var(--p2);
 }
 
-div#container-inicio {
+#container-inicio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.8rem 0;
+}
+
+#container-inicio>img {
+    width: 78%;
+    margin-top: 3rem;
+    max-width: 36rem;
+}
+
+#box-about {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-div#container-inicio>img {
-    width: 25rem;
-    margin-top: 2rem;
-}
-
-div#box-about {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: max-content;
-}
-
-div#box-about p {
+#box-about p {
     color: var(--texto1);
-    font-size: 1.3rem;
-    font-weight: 500;
+    font-size: 1.4rem;
+    font-weight: 400;
     letter-spacing: -.01rem;
     line-height: 140%;
-    margin-top: 2.2rem;
-    width: 26rem;
+    width: 84%;
     text-align: center;
 }
 
-div#box-about ul {
+#box-about ul {
     display: flex;
-    column-gap: 4.8rem;
-    margin-top: 2.4rem;
+    justify-content: space-between;
+    width: 67%;
+    max-width: 29rem;
+    margin-top: 2.6rem;
 }
 
-div#box-about ul li {
+#box-about ul li {
     list-style: none;
 }
 
-div#box-about ul li a {
+#box-about ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,64 +266,66 @@ div#box-about ul li a {
     transition: box-shadow, transform .3s;
 }
 
-div#box-about ul li a:hover {
+#box-about ul li a:hover {
     box-shadow: 0 0 1.5rem #070A1A;
     transform: scale(1.075);
 }
 
-div#box-about ul li a svg {
+#box-about ul li a svg {
     width: 50%;
     height: 50%;
     fill: var(--p1);
 }
 
-div#box-about a#a-contatar {
+#box-about #a-contatar {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 23.4rem;
-    height: 3.8rem;
-    margin: 1.7rem 0 2.5rem 0;
-    font-size: 1.4rem;
-    font-weight: 700;
+    width: 73%;
+    max-width: 31rem;
+    height: 4.8rem;
+    margin: 2.2rem 0 3rem 0;
+    font-size: 1.6rem;
+    font-weight: 600;
     text-decoration: none;
     color: var(--white);
     background-color: var(--p2);
     border: .2rem solid var(--borda);
     border-radius: .5rem;
-    letter-spacing: .2rem;
+    letter-spacing: .4rem;
     transition: letter-spacing .3s;
 }
 
-div#box-about a#a-contatar:hover {
-    letter-spacing: .4rem;
+#box-about a#a-contatar:hover {
+    letter-spacing: .5rem;
 }
 
 /* ----- SECTION QUALIDADES -- SECTION QUALIDADES -- SECTION QUALIDADES ----- */
 
-section#qualidades {
+#qualidades {
     background-color: var(--p3);
     display: flex;
     flex-direction: column;
 }
 
-div#container-qualidades {
+#container-qualidades {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-div#container-qualidades h1 {
+#container-qualidades h1 {
     color: var(--white);
-    font-size: 3.3rem;
+    font-size: 3.4rem;
     align-self: flex-start;
-    width: 100%;
+    width: 87.5%;
     margin: 2.2rem auto 3.6rem auto;
 
     position: relative;
 }
 
-div#container-qualidades h1::before {
+#container-qualidades h1::before {
     content: '';
     display: block;
     width: 3.7rem;
@@ -315,7 +337,7 @@ div#container-qualidades h1::before {
     bottom: -.3rem;
 }
 
-div#container-qualidades h1::after {
+#container-qualidades h1::after {
     content: '';
     display: block;
     width: .5rem;
@@ -328,9 +350,12 @@ div#container-qualidades h1::after {
     bottom: -.45rem;
 }
 
-div.box-qualidade {
-    width: 28rem;
-    height: 20.8rem;
+#container-box-qualidades {
+    width: 87.5%;
+}
+
+.box-qualidade {
+    min-height: 18rem;
     background-color: var(--p2);
     border-radius: .5rem;
     border: .2rem solid var(--borda);
@@ -340,41 +365,41 @@ div.box-qualidade {
     cursor: pointer;
 }
 
-div.box-qualidade:hover {
+.box-qualidade:hover {
     border: .2rem solid var(--p1);
 }
 
-div.box-qualidade div {
+.box-qualidade div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-div.box-qualidade div h2 {
+.box-qualidade div h2 {
     color: var(--white);
     font-size: 2.1rem;
 }
 
-div.box-qualidade div svg {
+.box-qualidade div svg {
     height: 3.6rem;
 }
 
-div.box-qualidade div svg stop {
+.box-qualidade div svg stop {
     stop-color: var(--p1);
 }
 
-div.box-qualidade h3 {
+.content-qualidade {
     color: var(--texto1);
     margin-top: 3rem;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 140%;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     letter-spacing: -.03rem;
 }
 
 /* ----- SECTION PROJETOS -- SECTION PROJETOS -- SECTION PROJETOS ----- */
 
-section#projetos {
+#projetos {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -382,8 +407,8 @@ section#projetos {
     padding-bottom: 4rem;
 }
 
-div#container-projetos h1 {
-    width: 100%;
+#container-projetos h1 {
+    width: 87.5%;
     margin: 2.2rem auto 3.6rem auto;
     font-size: 3.3rem;
     color: var(--white);
@@ -391,7 +416,7 @@ div#container-projetos h1 {
     position: relative;
 }
 
-div#container-projetos h1::before {
+#container-projetos h1::before {
     content: '';
     display: block;
     width: 3.7rem;
@@ -403,7 +428,7 @@ div#container-projetos h1::before {
     bottom: -.3rem;
 }
 
-div#container-projetos h1::after {
+#container-projetos h1::after {
     content: '';
     display: block;
     width: .5rem;
@@ -416,14 +441,15 @@ div#container-projetos h1::after {
     bottom: -.45rem;
 }
 
-div#container-box-projetos {
+#container-box-projetos {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    gap: 3rem 0;
+    gap: 3rem 3rem;
 }
 
-div.box-projeto {
-    width: 28rem;
+.box-projeto {
+    width: 87.5%;
     background-color: var(--p3);
     border: .2rem solid var(--borda);
     border-radius: .5rem;
@@ -432,7 +458,7 @@ div.box-projeto {
     position: relative;
 }
 
-div.box-projeto:nth-child(2)::before {
+.box-projeto:nth-child(2)::before {
     content: '';
     display: block;
     height: 100%;
@@ -445,7 +471,7 @@ div.box-projeto:nth-child(2)::before {
     z-index: 1;
 }
 
-div.box-projeto:nth-child(2)::after {
+.box-projeto:nth-child(2)::after {
     content: 'Em Progresso...';
     color: var(--white);
     font-size: 2.5rem;
@@ -460,7 +486,7 @@ div.box-projeto:nth-child(2)::after {
     z-index: 1;
 }
 
-div.box-projeto h2 {
+.box-projeto h2 {
     color: var(--p1);
     font-size: 2.9rem;
     margin: 1.95rem auto 0 1.95rem;
@@ -469,7 +495,7 @@ div.box-projeto h2 {
     position: relative;
 }
 
-div.box-projeto h2 svg {
+.box-projeto h2 svg {
     content: '';
     display: block;
     width: 1.7rem;
@@ -479,16 +505,16 @@ div.box-projeto h2 svg {
     left: 100%;
 }
 
-div.box-projeto h2 svg rect {
+.box-projeto h2 svg rect {
     fill: var(--p1);
     width: .8rem;
     height: .8rem;
 }
 
-div.slide-box {
+.slide-box {
     display: flex;
-    width: 85.87%;
-    height: 17.2rem;
+    width: 42rem;
+    height: 18rem;
     margin: 1.4rem auto 0 auto;
     overflow: hidden;
     border-radius: 1rem;
@@ -496,14 +522,14 @@ div.slide-box {
     position: relative;
 }
 
-div.slide-box img {
+.slide-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: .3s;
 }
 
-div.slide-control {
+.slide-control {
     display: flex;
     gap: 0 .8rem;
 
@@ -513,7 +539,7 @@ div.slide-control {
     transform: translateX(-50%);
 }
 
-div.slide-control span.slide-button {
+.slide-control span.slide-button {
     display: block;
     width: 2.6rem;
     height: 1rem;
@@ -523,11 +549,11 @@ div.slide-control span.slide-button {
     cursor: pointer;
 }
 
-div.slide-control span.slide-button:first-child {
+.slide-control span.slide-button:first-child {
     background-color: var(--white);
 }
 
-div.content-projeto h3 {
+.content-projeto h3 {
     color: var(--texto1);
     font-size: 1.5rem;
     font-weight: 500;
@@ -542,11 +568,11 @@ div.content-projeto h3 {
     transition: background-size .3s;
 }
 
-div.content-projeto h3:hover {
+.content-projeto h3:hover {
     background-size: 100% .1rem;
 }
 
-div.content-projeto p {
+.content-projeto p {
     color: var(--white);
     font-size: 1.7rem;
     font-weight: 600;
@@ -554,7 +580,7 @@ div.content-projeto p {
     margin-top: 2.6rem;
 }
 
-div.content-projeto div {
+.content-projeto div {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
