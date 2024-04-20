@@ -14,7 +14,9 @@ jobs:
 
       - name: Install Dependences
         run: |
-          cd public
+          npm i
+          npm run build
+          cd ./public
           composer install
 
       - name: SSH Commands
