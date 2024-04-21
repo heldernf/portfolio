@@ -18,13 +18,13 @@ main.addEventListener('click', function () {
 });
 
 // ADD UM ID ESTILIZADO COM UMA ANIMAÇÃO NO CSS PARA AS OPÇÕES DO MENU
-const options = document.querySelectorAll(".options");
+const options = document.querySelectorAll(".options-menu");
 function activeOption(index) {
     options.forEach(option => {
         option.removeAttribute("id");
     });
 
-    options[index].id = "active";
+    options[index].id = "active-option-menu";
 }
 
 // FECHA O MENU QUANDO CLICA EM UMA DAS OPÇÕES DELE
