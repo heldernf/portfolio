@@ -12,10 +12,11 @@
     --p2: #01040C;
     --p3: #030611;
     --borda: #070A1A;
-    --texto1: #B9B9B9;
+    --texto1: #ffffff99;
     --texto2: #DBE2FF;
     --oxanium: "Oxanium", sans-serif;
     --outfit: "Outfit", sans-serif;
+    --standard: 1.45rem;
 }
 
 * {
@@ -61,7 +62,9 @@ h6 {
 /* ----- HEADER -- HEADER -- HEADER ----- */
 
 header {
-    background-color: #040715;
+    background-color: rgba(4, 7, 21, 0.6);
+    backdrop-filter: blur(1rem);
+    -webkit-backdrop-filter: blur(1rem);
     height: 5.5rem;
     position: fixed;
     width: 100%;
@@ -220,7 +223,8 @@ main section>div {
 }
 
 #my-name-is {
-    width: 27rem;
+    width: 90%;
+    max-width: 42rem;
     display: flex;
     flex-direction: column;
     margin-top: 4rem;
@@ -291,7 +295,7 @@ main section>div {
     width: 94%;
     max-width: 42.7rem;
     text-align: justify;
-    color: var(--texto1);
+    color: var(--white);
     font-size: 1.6rem;
     font-weight: 200;
     font-family: var(--oxanium);
@@ -356,24 +360,28 @@ main section>div {
     font-weight: 300;
     text-decoration: none;
     color: var(--p1);
-    border: .2rem solid var(--p1);
     border-radius: 4rem;
     letter-spacing: .45rem;
     transition: all .3s;
+    position: relative;
+    background-color: var(--p2);
 }
 
 #a-contatar:hover {
-    letter-spacing: .55rem;
-    background-color: var(--p1);
-    color: var(--white);
+    letter-spacing: .65rem;
 }
 
-#a-contatar stop {
-    transition: all .3s;
+#a-contatar::before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: inherit;
+    inset: -.2rem;
+    background: linear-gradient(145deg, var(--p1), var(--p1-duo));
 }
 
-#a-contatar:hover stop {
-    stop-color: var(--white);
+#a-contatar:hover::before {
+    background: linear-gradient(-145deg, var(--p1), var(--p1-duo));
 }
 
 #a-contatar svg {
@@ -393,7 +401,7 @@ main section>div {
     color: var(--white);
     font-size: 3.4rem;
     font-weight: 200;
-    margin: 2.2rem 0 0 0;
+    margin: 3.2rem 0 0 0;
     display: block;
     width: 100%;
 
@@ -427,10 +435,10 @@ main section>div {
 
 #title-habilidade p {
     width: 90%;
-    max-width: 34.3rem;
+    max-width: 35.5rem;
     margin: 2rem 0 0 0;
     color: var(--texto1);
-    font-size: 1.4rem;
+    font-size: var(--standard);
     font-weight: 200;
     position: relative;
     padding-bottom: 1rem;
@@ -451,11 +459,9 @@ main section>div {
     border-radius: .5rem;
     padding: 2rem;
     margin-top: 4.2rem;
-    transition: border .9s;
     cursor: pointer;
     position: relative;
     background-color: var(--p3);
-
 }
 
 .box-habilidade::before,
@@ -465,13 +471,12 @@ main section>div {
     inset: -.2rem;
     z-index: -1;
     border-radius: inherit;
-    background: conic-gradient(from var(--gradient-angle), var(--p1-duo), transparent, transparent, var(--p1-duo));
-    animation: gradient-increment 10s linear infinite;
+    background: conic-gradient(from var(--gradient-angle), var(--p1-duo), transparent, var(--p1-duo));
+    animation: gradient-increment 7s linear infinite;
 }
 
 .box-habilidade::after {
-    filter: blur(.75rem);
-}
+    filter: blur(.75rem);}
 
 @keyframes gradient-increment {
     from {
@@ -491,7 +496,7 @@ main section>div {
 
 .box-habilidade div h2 {
     color: var(--white);
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     font-weight: 200;
 }
 
@@ -504,12 +509,69 @@ main section>div {
 }
 
 .content-habilidade {
-    color: var(--texto1);
+    color: #ffffff99;
     margin-top: 3rem;
-    font-weight: 400;
+    font-weight: 200;
     line-height: 140%;
+    font-size: var(--standard);
+}
+
+#title-skill h1 {
+    color: var(--texto2);
+    font-size: 2.4rem;
+    font-weight: 300;
+    margin-top: 5rem;
+}
+
+#title-skill p {
+    width: 90%;
+    max-width: 35.5rem;
+    color: var(--texto1);
+    font-size: var(--standard);
+    font-weight: 200;
+    padding-bottom: 1rem;
+    position: relative;
+}
+
+#title-skill p::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: calc(100% + 1rem);
+    height: .1rem;
+    background: linear-gradient(to right, var(--p1), var(--p1-duo));
+}
+
+#skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    justify-items: center;
+    gap: 2rem 4rem;
+    margin: 5rem 0 4rem 0;
+    padding: 0 2rem;
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem 0;
+}
+
+.skill svg {
+    transition: transform, filter, .3s ease-out;
+}
+
+.skill svg:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 1rem #6b3ed44d);
+}
+.skill h3 {
+    color: var(--texto2);
+    font-weight: 200;
     font-size: 1.4rem;
-    letter-spacing: -.03rem;
+    text-align: center;
 }
 
 /* ----- SECTION PROJETOS -- SECTION PROJETOS -- SECTION PROJETOS ----- */
@@ -561,7 +623,8 @@ main section>div {
     color: var(--white);
     width: 100%;
     font-size: 2.5rem;
-    font-weight: 500;
+    font-weight: 300;
+    font-family: var(--oxanium);
     letter-spacing: .35rem;
     text-align: center;
 
@@ -651,8 +714,8 @@ main section>div {
 
 .description-projeto {
     color: var(--texto1);
-    font-size: 1.4rem;
-    font-weight: 400;
+    font-size: var(--standard);
+    font-weight: 200;
     line-height: 140%;
     margin: 1.4rem 0 0 0;
     background: linear-gradient(to right, transparent, var(--p1), transparent) no-repeat;
@@ -667,8 +730,8 @@ main section>div {
 
 .languages-title {
     color: var(--white);
-    font-size: 1.7rem;
-    font-weight: 500;
+    font-size: 1.8rem;
+    font-weight: 400;
     font-family: var(--oxanium);
     text-align: center;
     margin-top: 2.6rem;
@@ -677,7 +740,9 @@ main section>div {
 .languages-projeto {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(3rem, 1fr));
+    grid-template-rows: repeat(2, 1fr);
     justify-items: center;
+    align-items: center;
     gap: 1rem 10%;
     min-height: 11.9rem;
     padding: 1.6rem;
@@ -688,7 +753,8 @@ main section>div {
 
 .languages-projeto svg {
     transition: transform .3s;
-    cursor: pointer;
+    height: 3.5rem;
+    width: 3rem;
 }
 
 .languages-projeto svg:hover {
@@ -940,7 +1006,7 @@ footer {
 footer p {
     color: var(--texto2);
     font-size: 1.2rem;
-    font-weight: 500;
+    font-weight: 400;
     width: 86%;
     text-align: center;
 }
