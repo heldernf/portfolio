@@ -71,8 +71,8 @@ let startX, currentX, deltaX, margin, lastDeltaX;
 slideBox.forEach(slide => {
     slide.addEventListener('touchstart', function (e) {
         startX = e.touches[0].clientX;
-    });
-
+    }, { passive: true});
+    
     slide.addEventListener('touchmove', function (e) {
         const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
         currentX = e.touches[0].clientX;
@@ -85,7 +85,7 @@ slideBox.forEach(slide => {
             firstImg[indexCurrentSlideBox].style.marginLeft = `${margin}%`;
             lastDeltaX = deltaX;
         }
-    });
+    }, { passive: true});
 
     slide.addEventListener('touchend', function () {
         const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);

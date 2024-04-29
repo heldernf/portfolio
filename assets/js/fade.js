@@ -1,20 +1,31 @@
-const fadeElements = document.querySelectorAll(".fade-up, .fade-right, .fade-left, .fade-boom");
+const fadeElements = document.querySelectorAll(".fade-up, .fade-right, .fade-down, .fade-left, .fade-boom");
 let counter = 0;
-window.innerWidth < 500 ? lack = 700 : lack = 750;
+window.innerWidth < 500 ? lack = 650 : lack = 750;
 
-function stopEventListenerScroll () {
+function stopEventListenerScroll() {
     window.removeEventListener("scroll", fade);
 }
 
-function fade() {
-    fadeElements.forEach(fade => {
-        const fadeType = fade.classList.contains("fade-up") ? "up" : fade.classList.contains("fade-right") ? "right" : fade.classList.contains("fade-left") ? "left" : "boom";
+function delaySet(fade) {
+    const regex = /fade-delay-(\d+(_\d+)?s)/;
+    
+    for (let cls of fade.classList) {
+        const search = regex.exec(cls);
+        if (search) {
+            return search[1].replace('_', '.');
+        }
+    }
 
-        if (fade.getBoundingClientRect().top - document.querySelector("header").offsetHeight <= lack && getComputedStyle(fade).getPropertyValue('animation-name') != fadeType) {
-            fade.style.animation = `${fadeType} .8s cubic-bezier(0.34, 1.4, 0.64, 1) 1 forwards`;
-            
-            counter++;
-            counter == fadeElements.length && stopEventListenerScroll();
+    return '0s';
+}
+
+function fade() {
+    fadeElements.forEach(fade => {        
+        if (fade.getBoundingClientRect().top - document.querySelector("header").offsetHeight <= lack) {
+            const delay = delaySet(fade);
+            fade.style.transition = `1s cubic-bezier(0.25, 1, 0.5, 1) ${delay}`;
+            fade.classList.contains("fade-boom") ? fade.style.transform = "scale(1)"  : fade.style.transform = "translate(0, 0)"
+            fade.style.opacity = '1';
         }
     });
 }

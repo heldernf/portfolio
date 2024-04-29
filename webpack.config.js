@@ -46,7 +46,7 @@ module.exports = {
             patterns: [
                 { from: './php/', to: 'php' },
                 { from: '.htaccess', to: './' },
-                { from: 'composer.json', to: './' }
+                { from: 'composer.json', to: './' },
             ]
         })
     ]
