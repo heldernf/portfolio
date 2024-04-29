@@ -24,7 +24,7 @@ function fade() {
         if (fade.getBoundingClientRect().top - document.querySelector("header").offsetHeight <= lack) {
             const delay = delaySet(fade);
             fade.style.transition = `1s cubic-bezier(0.25, 1, 0.5, 1) ${delay}`;
-            fade.classList.contains("fade-boom") ? fade.style.transform = "scale(1)"  : fade.style.transform = "translate(0, 0)"
+            fade.classList.contains("fade-boom") ? fade.style.scale = "1"  : fade.style.translate = "0 0";
             fade.style.opacity = '1';
         }
     });

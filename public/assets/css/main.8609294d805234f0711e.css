@@ -930,23 +930,23 @@ footer p {
 }
 
 .fade-up {
-    transform: translate(0rem, 8rem);
+    translate: 0rem 10rem;
 }
 
 .fade-right {
-    transform: translate(-8rem, 0);
+    translate: -10rem 0;
 }
 
 .fade-down {
-    transform: translate(0, -8rem);
+    translate: 0 -10rem;
 }
 
 .fade-left {
-    transform: translate(8rem, 0);
+    translate: 10rem 0;
 }
 
 .fade-boom {
-    transform: scale(0);
+    scale: 0;
 }
 @media (min-width: 500px) {
     /* ----- SECTION PROJETOS -- SECTION PROJETOS -- SECTION PROJETOS ----- */
