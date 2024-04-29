@@ -94,7 +94,7 @@ main {
 /* ----- GERAL SECTION ----- GERAL SECTION ----- */
 
 main section {
-    /* overflow: hidden; */
+    overflow: hidden;
     position: relative;
     z-index: 0;
 }
@@ -359,15 +359,6 @@ main section>div {
     margin-top: 4.6rem;
 }
 
-.box-habilidade {
-    min-height: 18rem;
-    border-radius: .5rem;
-    padding: 2.5rem;
-    cursor: pointer;
-    position: relative;
-    background-color: var(--p3);
-}
-
 .box-habilidade:not(:nth-child(1)) {
     margin-top: 4.2rem;
 }
@@ -378,7 +369,7 @@ main section>div {
     position: absolute;
     inset: -.2rem;
     z-index: -1;
-    border-radius: inherit;
+    border-radius: .5rem;
     background: conic-gradient(from var(--gradient-angle), var(--p1-duo), transparent, var(--p1-duo));
     animation: gradient-increment 7s linear infinite;
 }
@@ -397,23 +388,32 @@ main section>div {
     }
 }
 
-.box-habilidade div {
+.box-habilidade-wrapper {
+    min-height: 18rem;
+    height: 100%;
+    border-radius: .5rem;
+    padding: 2.5rem;
+    background-color: var(--p3);
+}
+
+.box-habilidade-wrapper div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    inset: 0;
 }
 
-.box-habilidade div h2 {
+.box-habilidade-wrapper div h2 {
     color: var(--white);
     font-size: 2.2rem;
     font-weight: 300;
 }
 
-.box-habilidade div svg {
+.box-habilidade-wrapper div svg {
     height: 3.6rem;
 }
 
-.box-habilidade div svg stop {
+.box-habilidade-wrapper div svg stop {
     stop-color: var(--p1);
 }
 
@@ -923,51 +923,28 @@ footer p {
 
 .fade-up,
 .fade-right,
+.fade-down,
 .fade-left,
 .fade-boom {
     opacity: 0;
 }
 
-@keyframes up {
-    from {
-        translate: 0 25rem;
-    }
-
-    to {
-        translate: 0 0;
-        opacity: 1;
-    }
+.fade-up {
+    transform: translate(0rem, 8rem);
 }
 
-@keyframes right {
-    from {
-        translate: -25rem 0;
-    }
-
-    to {
-        translate: 0 0;
-        opacity: 1;
-    }
+.fade-right {
+    transform: translate(-8rem, 0);
 }
 
-@keyframes left {
-    from {
-        translate: 25rem 0;
-    }
-
-    to {
-        translate: 0 0;
-        opacity: 1;
-    }
+.fade-down {
+    transform: translate(0, -8rem);
 }
 
-@keyframes boom {
-    from {
-        scale: 0;
-    }
+.fade-left {
+    transform: translate(8rem, 0);
+}
 
-    to {
-        scale: 1;
-        opacity: 1;
-    }
+.fade-boom {
+    transform: scale(0);
 }
