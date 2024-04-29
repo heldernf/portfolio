@@ -48,7 +48,7 @@ function icrementoSlide() {
         activeBackground(i);
     }
 }
-setInterval(icrementoSlide, 10000000);
+setInterval(icrementoSlide, 8000);
 
 // PASSA IMAGENS DO SLIDE CLICANDO NOS BOTÕES
 const btnSlide = document.querySelectorAll(".slide-button");
