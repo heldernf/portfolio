@@ -1,4 +1,4 @@
-## Sobre o projeto ⚙️
+# Sobre o projeto ⚙️
 - Para o desenvolvimento e todos os outros processos desses portfólio, eu usei: HTML, CSS, JS, PHP, Webpack, Github Actions e o Figma.
 
 - O projeto conta com uma pasta chamada 'public', é nela onde é gerado todo o resultado após o comando de build, start ou dev (ex: npm build), pois o Webpack empacota tudo e bota dentro dessa pasta.
@@ -10,14 +10,27 @@ mas também foi feita um grande diminuição do código das Medias Queries do po
 
 - A parte de envio de email está funcional e os emails caem diretamente no meu email profissional, favor evitar o uso desnecessário do mesmo, faça o uso apenas se for para algo relativamente importante.
 
-## Como usar 🤔
+# Funcionalidades 🗝️
+- Exibir meus projetos.
+- Mostrar minhas habilidades técnicas.
+- Incluir informações de contato e links para os meus perfis de redes sociais.
 
-### Clone o projeto
+# Como instalar 🤔
+
+## Pré-requisitos 📖
+
+- Node.js instalado no seu sistema.
+- Composer instalado no seu sistema.
+- PHP instalado no seu sistema.
+
+## Passos 🐾
+
+#### Clone o projeto
 ```
 git clone https://github.com/heldernf/portfolio.git
 ```
 
-### Instale as dependências
+#### Instale as dependências
 ```
 # Instala dependências Node
 npm i
@@ -27,3 +40,6 @@ composer i
 ```
 
 Após isso o projeto estará 100% pronto para o uso 😉
+
+# Licença 📜
+Este projeto é licenciado sob a CC-BY-NC-SA-4.0. Consulte o arquivo LICENSE para obter mais informações.
