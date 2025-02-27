@@ -1,109 +1,60 @@
-const firstImg = document.querySelectorAll(".first-img-slide");
-const slideBox = document.querySelectorAll('.slide-box');
-const imgPorSlide = slideBox[0].querySelectorAll('img').length;
-let nome;
-const positionSlide = {};
-for (let i = 0; i < firstImg.length; i++) {
-    nome = 'slide' + i;
-    positionSlide[nome] = 0;
-}
+const slideContainers = document.querySelectorAll(".slide-box");
 
-//MARCA OS BACKGROUND DOS BOTÕES DO SLIDE
-function activeBackground(i) {
-    const allBtnSlideCurrent = firstImg[i].parentNode.querySelector('.slide-control').querySelectorAll('.slide-button');
+slideContainers.forEach((container, index) => {
+    let images = container.querySelectorAll("img");
+    let buttons = container.querySelectorAll(".slide-button");
+    let currentIndex = 0;
 
-    allBtnSlideCurrent.forEach(btn => {
-        btn.style.backgroundColor = 'transparent';
-    });
+    function updateSlide() {
+        // Garante que o índice não ultrapasse o número de imagens
+        if (currentIndex >= images.length) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = images.length - 1;
 
-    nome = 'slide' + i;
-    allBtnSlideCurrent[positionSlide[nome]].style.backgroundColor = 'white'
-}
+        // Define a posição correta da primeira imagem no slide
+        let offset = -100 * currentIndex;
+        images[0].style.marginLeft = `${offset}%`;
 
-// PASSA A IMAGEM DO SLIDE
-function moveSlide(nome, i) {
-    if (positionSlide[nome] == 0) {
-        firstImg[i].style.marginLeft = "0%";
-    } else if (positionSlide[nome] == 1) {
-        firstImg[i].style.marginLeft = "-100%";
-    } else {
-        firstImg[i].style.marginLeft = "-200%";
-    }
-}
-
-// PASSA IMAGENS AUTOMATICAMENTE
-function icrementoSlide() {
-    lastDeltaX = 0;
-
-    for (let i = 0; i < firstImg.length; i++) {
-        nome = 'slide' + i;
-
-        positionSlide[nome]++;
-
-        if (positionSlide[nome] == imgPorSlide) {
-            positionSlide[nome] = 0;
+        // Atualiza os botões de navegação
+        buttons.forEach(btn => btn.style.backgroundColor = "transparent");
+        if (buttons[currentIndex]) {
+            buttons[currentIndex].style.backgroundColor = "white";
         }
-
-        moveSlide(nome, i);
-        activeBackground(i);
     }
-}
-setInterval(icrementoSlide, 8000);
 
-// PASSA IMAGENS DO SLIDE CLICANDO NOS BOTÕES
-const btnSlide = document.querySelectorAll(".slide-button");
-btnSlide.forEach((button, index) => {
-    button.addEventListener('click', function () {
-        const allBoxProjeto = document.querySelectorAll('.box-projeto');
-        const currentBoxProjeto = button.closest('.box-projeto');
-        const indexCurrentBoxProjeto = Array.from(allBoxProjeto).indexOf(currentBoxProjeto);
+    function nextSlide() {
+        currentIndex++;
+        updateSlide();
+    }
 
-        nome = 'slide' + indexCurrentBoxProjeto;
-        const selectPosition = index % 3;
-        positionSlide[nome] = selectPosition;
-        moveSlide(nome, indexCurrentBoxProjeto);
-        activeBackground(indexCurrentBoxProjeto);
+    function prevSlide() {
+        currentIndex--;
+        updateSlide();
+    }
+
+    // Botões manuais
+    buttons.forEach((btn, btnIndex) => {
+        btn.addEventListener("click", () => {
+            currentIndex = btnIndex;
+            updateSlide();
+        });
     });
-});
 
-// PASSA IMAGENS DO SLIDE COM TOUCH
-let startX, currentX, deltaX, margin, lastDeltaX;
-slideBox.forEach(slide => {
-    slide.addEventListener('touchstart', function (e) {
-        startX = e.touches[0].clientX;
-    }, { passive: true});
+    // Auto slide
+    setInterval(nextSlide, 8000);
+
+    // Suporte a touch (mobile)
+    let startX = 0, deltaX = 0;
     
-    slide.addEventListener('touchmove', function (e) {
-        const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
-        currentX = e.touches[0].clientX;
-        deltaX = currentX - startX;
+    container.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    }, { passive: true });
 
-        if (deltaX >= -20 && deltaX <= 20) {
-            nome = 'slide' + indexCurrentSlideBox;
+    container.addEventListener("touchmove", e => {
+        deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
 
-            margin = deltaX - (positionSlide[nome] * 100);
-            firstImg[indexCurrentSlideBox].style.marginLeft = `${margin}%`;
-            lastDeltaX = deltaX;
-        }
-    }, { passive: true});
-
-    slide.addEventListener('touchend', function () {
-        const indexCurrentSlideBox = Array.from(slideBox).indexOf(this);
-        nome = 'slide' + indexCurrentSlideBox;
-        if (lastDeltaX < 0 && positionSlide[nome] < imgPorSlide - 1) {
-            positionSlide[nome]++;
-
-            moveSlide(nome, indexCurrentSlideBox);
-            activeBackground(indexCurrentSlideBox);
-        } else if (lastDeltaX > 0 && positionSlide[nome] > 0) {
-            positionSlide[nome]--;
-
-            moveSlide(nome, indexCurrentSlideBox);
-            activeBackground(indexCurrentSlideBox);
-        } else {
-            moveSlide(nome, indexCurrentSlideBox);
-        }
-
-        lastDeltaX = 0;
+    container.addEventListener("touchend", () => {
+        if (deltaX < -50) nextSlide(); // Arrastar para esquerda -> próxima imagem
+        if (deltaX > 50) prevSlide(); // Arrastar para direita -> imagem anterior
     });
 });

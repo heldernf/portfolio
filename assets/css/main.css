@@ -515,7 +515,7 @@ main section>div {
     position: relative;
 }
 
-.box-projeto:nth-child(2)::before {
+.box-projeto:last-child::before {
     content: '';
     display: block;
     height: 100%;
@@ -528,8 +528,8 @@ main section>div {
     z-index: 1;
 }
 
-.box-projeto:nth-child(2)::after {
-    content: 'Em Progresso...';
+.box-projeto:last-child::after {
+    content: 'HNF Lib in progress...';
     color: var(--white);
     width: 100%;
     font-size: 2.5rem;
@@ -632,6 +632,20 @@ main section>div {
     background-position: 50% 100%;
     background-size: 0% .1rem;
     transition: background-size .3s;
+    height: 15rem;
+    overflow-y: auto;
+}
+
+.description-projeto::-webkit-scrollbar {
+    width: .6rem;
+    background-color: var(--borda);
+    cursor: default;
+}
+
+.description-projeto::-webkit-scrollbar-thumb {
+    background-color: var(--p1);
+    cursor: default;
+    border-radius: .3rem;
 }
 
 .description-projeto:hover {
